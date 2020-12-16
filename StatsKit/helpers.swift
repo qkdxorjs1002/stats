@@ -240,7 +240,7 @@ public func SeparatorView(_ title: String, origin: NSPoint, width: CGFloat) -> N
     return view
 }
 
-public func PopupRow(_ view: NSView, n: CGFloat, title: String, value: String) -> ValueField {
+public func PopupRow(_ view: NSView, n: CGFloat, title: String, value: String) -> (LabelField, ValueField) {
     let rowView: NSView = NSView(frame: NSRect(x: 0, y: 22*n, width: view.frame.width, height: 22))
     
     let labelWidth = title.widthOfString(usingFont: .systemFont(ofSize: 13, weight: .regular)) + 5
@@ -251,7 +251,7 @@ public func PopupRow(_ view: NSView, n: CGFloat, title: String, value: String) -
     rowView.addSubview(valueView)
     view.addSubview(rowView)
     
-    return valueView
+    return (labelView, valueView)
 }
 
 public func PopupWithColorRow(_ view: NSView, color: NSColor, n: CGFloat, title: String, value: String) -> ValueField {
@@ -656,17 +656,29 @@ public func LocalizedString(_ key: String, _ params: String..., comment: String 
     return string
 }
 
+extension UnitTemperature {
+    static var current: UnitTemperature {
+        let measureFormatter = MeasurementFormatter()
+        let measurement = Measurement(value: 0, unit: UnitTemperature.celsius)
+        return measureFormatter.string(from: measurement) == "0°C" ? .celsius : .fahrenheit
+    }
+}
+
 public func Temperature(_ value: Double) -> String {
     let stringUnit: String = Store.shared.string(key: "temperature_units", defaultValue: "system")
     let formatter = MeasurementFormatter()
+    formatter.locale = Locale.init(identifier: "en_US")
     formatter.numberFormatter.maximumFractionDigits = 0
     formatter.unitOptions = .providedUnit
-    formatter.unitStyle = .short
     
     var measurement = Measurement(value: value, unit: UnitTemperature.celsius)
-    if stringUnit != "system" {
-        if let temperatureUnit = TemperatureUnits.first(where: { $0.key == stringUnit }), let unit = temperatureUnit.additional as? UnitTemperature {
-            measurement.convert(to: unit)
+    if stringUnit == "system" {
+        measurement.convert(to: UnitTemperature.current)
+    } else {
+        if let temperatureUnit = TemperatureUnits.first(where: { $0.key == stringUnit }) {
+            if let unit = temperatureUnit.additional as? UnitTemperature {
+                measurement.convert(to: unit)
+            }
         }
     }
     
@@ -778,5 +790,48 @@ public class CAText: CATextLayer {
     public func getWidth(add: CGFloat = 0) -> CGFloat {
         let value = self.string as? String ?? ""
         return value.widthOfString(usingFont: self.font as! NSFont).rounded(.up) + add
+    }
+}
+
+public class WidgetLabelView: NSView {
+    private var title: String
+    
+    public init(_ title: String, height: CGFloat) {
+        self.title = title
+        
+        super.init(frame: NSRect(
+            x: 0,
+            y: 0,
+            width: 6,
+            height: height
+        ))
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    public override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+        
+        let style = NSMutableParagraphStyle()
+        style.alignment = .center
+        let stringAttributes = [
+            NSAttributedString.Key.font: NSFont.systemFont(ofSize: 7, weight: .regular),
+            NSAttributedString.Key.foregroundColor: NSColor.textColor,
+            NSAttributedString.Key.paragraphStyle: style
+        ]
+        
+        let title = self.title.prefix(3)
+        let letterHeight = self.frame.height / 3
+        let letterWidth: CGFloat = self.frame.height / CGFloat(title.count)
+        
+        var yMargin: CGFloat = 0
+        for char in title.uppercased().reversed() {
+            let rect = CGRect(x: 0, y: yMargin, width: letterWidth, height: letterHeight-1)
+            let str = NSAttributedString.init(string: "\(char)", attributes: stringAttributes)
+            str.draw(with: rect)
+            yMargin += letterHeight
+        }
     }
 }

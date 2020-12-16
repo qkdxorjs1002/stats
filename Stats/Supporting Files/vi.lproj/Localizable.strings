@@ -53,10 +53,10 @@
 "Start at login" = "Khởi động lúc đăng nhập";
 
 // Update
-"The latest version of Stats installed" = "Phiên bản Stats mới nhất đã được cài đặt";
+"The latest version of Stats installed" = "Stats đã được cập nhật";
 "Downloading..." = "Đang tải xuống...";
 "Current version: " = "Phiên bản hiện tại:  ";
-"Latest version: " = "Bản mới nhất:    ";
+"Latest version: " = "Bản mới nhất: ";
 
 // Widgets
 "Color" = "Màu";
@@ -113,7 +113,10 @@
 // Disk
 "Show removable disks" = "Hiển thị các đĩa rời";
 "Used disk memory" = "Đã dùng %0 trong tổng %1";
+"Free disk memory" = "Miễn phí %0 từ %1";
 "Disk to show" = "Đĩa hiển thị";
+"Open disk" = "Mở đĩa";
+"Switch view" = "Chuyển đổi chế độ xem";
 
 // Sensors
 "Temperature unit" = "Đơn vị nhiệt độ";
@@ -167,4 +170,4 @@
 "Hide additional information when full" = "Ẩn thông tin bổ sung khi pin đầy";
 
 // Fans
-"Fans" = "Fans";
+"Fans" = "Quạt";
