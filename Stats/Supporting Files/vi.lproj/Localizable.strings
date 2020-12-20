@@ -97,6 +97,7 @@
 
 // GPU
 "GPU to show" = "GPU để hiển thị";
+"Show GPU type" = "Hiển thị loại GPU";
 "GPU temperature" = "Nhiệt độ GPU";
 "GPU utilization" = "Sử dụng GPU";
 
@@ -109,6 +110,7 @@
 "Wired" = "Tính toán (hệ thống)";
 "Compressed" = "Đã nén";
 "Free" = "Còn Trống";
+"Swap" = "Swap";
 
 // Disk
 "Show removable disks" = "Hiển thị các đĩa rời";

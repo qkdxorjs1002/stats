@@ -97,6 +97,7 @@
 
 // GPU
 "GPU to show" = "GPU å vise";
+"Show GPU type" = "Vis GPU-typen";
 "GPU temperature" = "GPU-temperatur";
 "GPU utilization" = "GPU-bruk";
 
@@ -109,6 +110,7 @@
 "Wired" = "Opptatt";
 "Compressed" = "Komprimert";
 "Free" = "Ledig";
+"Swap" = "Swap";
 
 // Disk
 "Show removable disks" = "Vis utløsbare disker";

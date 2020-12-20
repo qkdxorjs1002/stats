@@ -97,6 +97,7 @@
 
 // GPU
 "GPU to show" = "GPU à afficher";
+"Show GPU type" = "Afficher le type de GPU";
 "GPU temperature" = "Température du GPU";
 "GPU utilization" = "Utilisation du GPU";
 
@@ -109,6 +110,7 @@
 "Wired" = "Réservée";
 "Compressed" = "Compressée";
 "Free" = "Libre";
+"Swap" = "Swap";
 
 // Disk
 "Show removable disks" = "Afficher les disques amovibles";

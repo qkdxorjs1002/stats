@@ -97,6 +97,7 @@
 
 // GPU
 "GPU to show" = "Gösterilecek GPU";
+"Show GPU type" = "GPU türünü göster";
 "GPU temperature" = "GPU sıcaklığı";
 "GPU utilization" = "GPU kullanımı";
 
@@ -109,6 +110,7 @@
 "Wired" = "Bağlı";
 "Compressed" = "Sıkıştırılmış";
 "Free" = "Boş";
+"Swap" = "Swap";
 
 // Disk
 "Show removable disks" = "Çıkarılabilir diskleri göster";

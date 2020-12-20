@@ -97,6 +97,7 @@
 
 // GPU
 "GPU to show" = "표시할 GPU";
+"Show GPU type" = "GPU 유형 표시";
 "GPU temperature" = "GPU 온도";
 "GPU utilization" = "GPU 활용";
 
@@ -109,6 +110,7 @@
 "Wired" = "예약됨";
 "Compressed" = "압축됨";
 "Free" = "여유";
+"Swap" = "Swap";
 
 // Disk
 "Show removable disks" = "이동식 디스크 표시";

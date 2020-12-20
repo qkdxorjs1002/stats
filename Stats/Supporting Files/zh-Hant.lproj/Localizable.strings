@@ -97,6 +97,7 @@
 
 // GPU
 "GPU to show" = "顯示 GPU";
+"Show GPU type" = "顯示GPU類型";
 "GPU temperature" = "GPU 溫度";
 "GPU utilization" = "GPU 使用率";
 
@@ -109,6 +110,7 @@
 "Wired" = "固定";
 "Compressed" = "已壓縮";
 "Free" = "可使用";
+"Swap" = "Swap";
 
 // Disk
 "Show removable disks" = "顯示卸除式磁碟";
